@@ -7,9 +7,20 @@ const _ = {
     number: (number > upBound)? upBound : lowBound,
 
     /* Second implementation of bound function */
-    clamp2: (number, lowBound, upBound) => Math.min(Math.max(number, lowBound), upBound)
+    clamp2: (number, lowBound, upBound) => Math.min(Math.max(number, lowBound), upBound),
 
-    
+    inRange: (number, start, end) => {
+        if( end === undefined){
+            end = start;
+            start = 0;
+        }
+        if ( end < start){
+            let temp = start;
+            start = end;
+            end = temp;
+        }
+        return (number >= start && number < end);
+    }
 };
 
 
@@ -23,4 +34,4 @@ h1.innerHTML = _.clamp(5,2,4);
 h2.innerHTML = _.clamp2(5,2,4);
  */
 
-h1.innerHTML = _.inRange(5.2, 4);
+h1.innerHTML = _.inRange( -3, -2, -6);
