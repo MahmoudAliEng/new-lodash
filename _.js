@@ -29,7 +29,10 @@ const _ = {
         let neededSpaceAmount = len - str.length;
         
         return "$".repeat(Math.floor(neededSpaceAmount/2)) + str + "$".repeat(neededSpaceAmount - Math.floor(neededSpaceAmount/2));
-    }
+    },
+
+    has: (object, k) => object[k] !== undefined 
+    
 };
 
 
@@ -47,4 +50,10 @@ h2.innerHTML = _.clamp2(5,2,4);
 
 //h1.innerHTML = _.words('Salam alikoum my brother');
 
-h1.innerHTML = _.pad('abc', 8);
+//h1.innerHTML = _.pad('abc', 8);
+
+
+// var other = _.create({ 'a': _.create({ 'b': 2 }) });
+
+var object = { 'a': 2 };
+h1.innerHTML = _.has(object, 'a');
