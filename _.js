@@ -31,7 +31,16 @@ const _ = {
         return "$".repeat(Math.floor(neededSpaceAmount/2)) + str + "$".repeat(neededSpaceAmount - Math.floor(neededSpaceAmount/2));
     },
 
-    has: (object, k) => object[k] !== undefined 
+    has: (object, k) => object[k] !== undefined ,
+
+    invert: object => {
+        let newObj = {};
+        for (let [key, value] of Object.entries(object)) {
+            newObj[value] = key;
+          }
+          
+          return newObj;
+    }
     
 };
 
@@ -55,5 +64,10 @@ h2.innerHTML = _.clamp2(5,2,4);
 
 // var other = _.create({ 'a': _.create({ 'b': 2 }) });
 
-var object = { 'a': 2 };
+/* var object = { 'a': 2 };
 h1.innerHTML = _.has(object, 'a');
+ */
+
+let newObject = _.invert({ 'a': 1, 'b': 2, 'c': 1 })
+console.log(newObject);
+ 
