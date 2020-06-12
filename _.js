@@ -47,6 +47,12 @@ const _ = {
             if(func(value))  return key;
           }
           return undefined;
+    },
+
+    drop: (array, n=1) => {
+        let res =  array;
+        res.splice(0, n);
+        return res;
     }
     
 };
@@ -78,11 +84,11 @@ h1.innerHTML = _.has(object, 'a');
 /* let newObject = _.invert({ 'a': 1, 'b': 2, 'c': 1 })
 console.log(newObject); */
 
-var users = {
+/* var users = {
     'barney':  { 'age': 36, 'active': true },
     'fred':    { 'age': 40, 'active': false },
     'pebbles': { 'age': 1,  'active': true }
-  };
- 
+  }; */
 //h1.innerHTML = _.findKey(users, function(o) { return o.age < 40; });
 
+h1.innerHTML = _.drop([1, 2, 3], 0);;
