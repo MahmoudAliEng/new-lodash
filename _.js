@@ -22,7 +22,14 @@ const _ = {
         return (number >= start && number < end);
     },
 
-    words: str => str.split(' ')
+    words: str => str.split(' '),
+
+    pad: (str, len) => {
+        if (! len > str.length) return str;
+        let neededSpaceAmount = len - str.length;
+        
+        return "$".repeat(Math.floor(neededSpaceAmount/2)) + str + "$".repeat(neededSpaceAmount - Math.floor(neededSpaceAmount/2));
+    }
 };
 
 
@@ -38,4 +45,6 @@ h2.innerHTML = _.clamp2(5,2,4);
 
 // h1.innerHTML = _.inRange( -3, -2, -6);
 
-h1.innerHTML = _.words('Salam alikoum my brother');
+//h1.innerHTML = _.words('Salam alikoum my brother');
+
+h1.innerHTML = _.pad('abc', 8);
