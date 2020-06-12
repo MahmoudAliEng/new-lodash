@@ -20,7 +20,9 @@ const _ = {
             end = temp;
         }
         return (number >= start && number < end);
-    }
+    },
+
+    words: str => str.split(' ')
 };
 
 
@@ -34,4 +36,6 @@ h1.innerHTML = _.clamp(5,2,4);
 h2.innerHTML = _.clamp2(5,2,4);
  */
 
-h1.innerHTML = _.inRange( -3, -2, -6);
+// h1.innerHTML = _.inRange( -3, -2, -6);
+
+h1.innerHTML = _.words('Salam alikoum my brother');
