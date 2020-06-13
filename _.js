@@ -62,6 +62,15 @@ const _ = {
         
         return newArray;    
 
+    },
+
+    chunk: (array, size=1) => {
+        let res = [];
+        for(let i = 0; i < array.length; ){
+            res.push(array.slice(i, size+i ));
+            i += size;
+        }
+        return res;
     }
     
 };
@@ -93,11 +102,13 @@ h1.innerHTML = _.has(object, 'a');
 /* let newObject = _.invert({ 'a': 1, 'b': 2, 'c': 1 })
 console.log(newObject); */
 
- var users = {
+ /* var users = {
     'barney':  { 'age': 36, 'active': true },
     'fred':    { 'age': 40, 'active': false },
     'pebbles': { 'age': 1,  'active': true }
-  }; 
+  };  */
 //h1.innerHTML = _.findKey(users, function(o) { return o.age < 40; });
 
-h1.innerHTML = _.dropWhile(users, function(o) { return !o.active; });
+//h1.innerHTML = _.dropWhile(users, function(o) { return !o.active; });
+
+h1.innerHTML = _.chunk(['a', 'b', 'c', 'd'], 2);
