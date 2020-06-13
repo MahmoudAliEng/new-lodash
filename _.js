@@ -9,6 +9,7 @@ const _ = {
     /* Second implementation of bound function */
     clamp2: (number, lowBound, upBound) => Math.min(Math.max(number, lowBound), upBound),
 
+    /* Verifiy if number is in given interval specified by start and end */
     inRange: (number, start, end) => {
         if( end === undefined){
             end = start;
@@ -22,17 +23,21 @@ const _ = {
         return (number >= start && number < end);
     },
 
+    /* Returns the words of given text by spliting by spcaes */
     words: str => str.split(' '),
 
-    pad: (str, len) => {
+    /* Add padding to the right and the left of string by filling with car up to the given length */
+    pad: (str, len, car) => {
         if (! len > str.length) return str;
         let neededSpaceAmount = len - str.length;
         
-        return "$".repeat(Math.floor(neededSpaceAmount/2)) + str + "$".repeat(neededSpaceAmount - Math.floor(neededSpaceAmount/2));
+        return car.repeat(Math.floor(neededSpaceAmount/2)) + str + car.repeat(neededSpaceAmount - Math.floor(neededSpaceAmount/2));
     },
 
+    /* Verify if a given object has a given key */
     has: (object, k) => object[k] !== undefined ,
 
+    /* Invert keys to be values and visversa for a given object */
     invert: object => {
         let newObj = {};
         for (let [key, value] of Object.entries(object)) {
@@ -42,6 +47,7 @@ const _ = {
           return newObj;
     },
 
+    /* Return a key of an object that fullfil a function */
     findKey: (object, func) => {
         for (let [key, value] of Object.entries(object)) {
             if(func(value))  return key;
@@ -49,12 +55,14 @@ const _ = {
           return undefined;
     },
 
+    /* Drop n element from the begining of an array */
     drop: (array, n=1) => {
         let res =  array;
         res.splice(0, n);
         return res;
     },
 
+    /* Drop elements from an array till the function returns a falsy value on the element */
      dropWhile: function (array, func)  {
         let fValue = array.findIndex((element, index) => !func(element, index, array));
         
@@ -64,6 +72,7 @@ const _ = {
 
     },
 
+    /* Returns chunks of an array with the given size */
     chunk: (array, size=1) => {
         let res = [];
         for(let i = 0; i < array.length; ){
