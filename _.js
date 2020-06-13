@@ -53,6 +53,15 @@ const _ = {
         let res =  array;
         res.splice(0, n);
         return res;
+    },
+
+     dropWhile: function (array, func)  {
+        let fValue = array.findIndex((element, index) => !func(element, index, array));
+        
+        let newArray = this.drop(fValue);
+        
+        return newArray;    
+
     }
     
 };
@@ -84,11 +93,11 @@ h1.innerHTML = _.has(object, 'a');
 /* let newObject = _.invert({ 'a': 1, 'b': 2, 'c': 1 })
 console.log(newObject); */
 
-/* var users = {
+ var users = {
     'barney':  { 'age': 36, 'active': true },
     'fred':    { 'age': 40, 'active': false },
     'pebbles': { 'age': 1,  'active': true }
-  }; */
+  }; 
 //h1.innerHTML = _.findKey(users, function(o) { return o.age < 40; });
 
-h1.innerHTML = _.drop([1, 2, 3], 0);;
+h1.innerHTML = _.dropWhile(users, function(o) { return !o.active; });
